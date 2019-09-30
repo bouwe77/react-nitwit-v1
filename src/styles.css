@@ -1,0 +1,28 @@
+/* =============================== */
+/* General application-wide styles */
+/* =============================== */
+
+body {
+  margin: 10px;
+  background-color: #eaecee;
+}
+
+.app {
+  position: absolute;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 500px;
+  overflow: hidden;
+}
+
+h1,
+p {
+  display: inline;
+}
+
+a {
+  color: #01d8ff;
+}
