@@ -4,7 +4,7 @@ import Timeline from "./Timeline";
 import Compose from "./Compose";
 import useTimeline from "./useTimeline";
 
-function TimelineContainer() {
+function TimelinePage() {
   const [timeline, addPost] = useTimeline();
 
   return (
@@ -15,4 +15,4 @@ function TimelineContainer() {
   );
 }
 
-export default TimelineContainer;
+export default TimelinePage;

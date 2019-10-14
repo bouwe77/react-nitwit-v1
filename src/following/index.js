@@ -4,7 +4,7 @@ import axios from "axios";
 import settings from "../settings";
 import UserList from "./UserList";
 
-export default class FollowingContainer extends React.Component {
+export default class FollowingPage extends React.Component {
   constructor(props) {
     super(props);
 

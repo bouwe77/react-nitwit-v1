@@ -12,7 +12,7 @@ import settings from "../settings";
 import Timeline from "./Timeline";
 import Compose from "./Compose";
 
-function TimelineContainer() {
+function TimelinePage() {
   const [timeline, setTimeline] = useState([]);
 
   function addPost(content) {
@@ -54,4 +54,4 @@ function TimelineContainer() {
   );
 }
 
-export default TimelineContainer;
+export default TimelinePage;

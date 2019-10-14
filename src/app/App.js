@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
 import Header from "./Header";
-import TimelineContainer from "../timeline/TimelineContainer";
-//import TimelineContainer from "../timeline/TimelineContainerNoPolling";
-import FollowingContainer from "../following/FollowingContainer";
+import TimelinePage from "../timeline";
+import FollowingPage from "../following/";
 
 function App() {
   const [showTimeline, setShowTimeline] = useState(true);
@@ -14,9 +13,7 @@ function App() {
         showTimeline={() => setShowTimeline(true)}
         showFollowing={() => setShowTimeline(false)}
       />
-      <div className="container">
-        {showTimeline ? <TimelineContainer /> : <FollowingContainer />}
-      </div>
+      <div className="container">{showTimeline ? <TimelinePage /> : <FollowingPage />}</div>
     </div>
   );
 }
