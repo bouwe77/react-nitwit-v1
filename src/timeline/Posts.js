@@ -2,14 +2,14 @@ import React from "react";
 
 import Post from "./Post";
 
-function Timeline(props) {
+function Posts({ posts }) {
   return (
     <>
-      {props.posts.map((post, index) => (
+      {posts.map((post, index) => (
         <Post post={post} key={index} />
       ))}
     </>
   );
 }
 
-export default Timeline;
+export default Posts;
