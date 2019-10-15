@@ -13,6 +13,8 @@ function App() {
         showTimeline={() => setShowTimeline(true)}
         showFollowing={() => setShowTimeline(false)}
       />
+
+      <Container />
       <div className="container">{showTimeline ? <TimelinePage /> : <FollowingPage />}</div>
     </div>
   );
