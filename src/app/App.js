@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Header from "./Header";
+import Container from "./Container";
 import TimelinePage from "../timeline";
 import FollowingPage from "../following/";
 
@@ -13,9 +14,9 @@ function App() {
         showTimeline={() => setShowTimeline(true)}
         showFollowing={() => setShowTimeline(false)}
       />
-
-      <Container />
-      <div className="container">{showTimeline ? <TimelinePage /> : <FollowingPage />}</div>
+      <Container>
+        <div className="container">{showTimeline ? <TimelinePage /> : <FollowingPage />}</div>
+      </Container>
     </div>
   );
 }
