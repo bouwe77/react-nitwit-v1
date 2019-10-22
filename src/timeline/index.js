@@ -1,7 +1,7 @@
 import React from "react";
 
-import Posts from "./Posts";
-import Compose from "./Compose";
+import Posts from "../posts/Posts";
+import Compose from "../compose/Compose";
 import useTimeline from "./useTimeline";
 
 function TimelinePage() {
