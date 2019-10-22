@@ -6,8 +6,8 @@ export async function getWithEtag(url, etag) {
     const res = await axios.get(url, {
       // Add a header to let the server know what's the version on the client.
       headers: { "If-None-Match": etag },
-      validateStatus: function(status_1) {
-        return status_1 < 400; // This means all status codes below 400 are valid
+      validateStatus: function(status) {
+        return status < 400; // This means all status codes below 400 are valid
       }
     });
     // Return a boolean indicating the data has changed.
