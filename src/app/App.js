@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 import Header from "./Header";
 import Container from "./Container";
-import TimelinePage from "../timeline";
-import FollowingPage from "../following/";
+//import TimelinePage from "../TimelinePage";
+import TimelinePage from "../TimelinePage-NoPolling";
+import FollowingPage from "../FollowingPage";
 
 function App() {
   const [showTimeline, setShowTimeline] = useState(true);
