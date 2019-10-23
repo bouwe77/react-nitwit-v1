@@ -3,6 +3,8 @@ import React from "react";
 import settings from "../../settings";
 import UserList from "./UserList";
 import { getFollowing } from "../../api/getFollowing";
+import { saveUnfollow } from "../../api/saveUnfollow";
+import { saveFollow } from "../../api/saveFollow";
 
 export default class Following extends React.Component {
   constructor(props) {
@@ -19,8 +21,8 @@ export default class Following extends React.Component {
 
   getUsers = () => {
     getFollowing(settings.user)
-      .then(res => {
-        this.setState({ users: res.data });
+      .then(result => {
+        this.setState({ users: result });
       })
       .catch(error => {
         console.log(error, error.request, error.response, error.config);
@@ -48,12 +50,11 @@ export default class Following extends React.Component {
 
     this.setState({ users });
 
-    // Post the new following status to the API.
+    // Save the new following status to the API.
     const unfollow = foundUser.youAreFollowing;
     if (unfollow) {
-      const url = `${settings.followingUrl}/${username}`;
       // Unfollow means a DELETE call to the API.
-      saveUnfollow.catch(error => {
+      saveUnfollow(settings.user, username).catch(error => {
         console.log(error, error.request, error.response, error.config);
         // The API call failed so restore the original state.
         this.setState({ users: previousUsers });
@@ -61,7 +62,7 @@ export default class Following extends React.Component {
     } else {
       const data = { user: username };
       // Follow means a POST to the API.
-      axios.post(settings.followingUrl, data).catch(error => {
+      saveFollow(settings.user, data).catch(error => {
         console.log(error, error.request, error.response, error.config);
         // The API call failed so restore the original state.
         this.setState({ users: previousUsers });
