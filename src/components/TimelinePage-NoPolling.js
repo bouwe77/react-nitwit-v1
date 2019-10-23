@@ -10,11 +10,19 @@ import React, { useState, useEffect } from "react";
 import settings from "../settings";
 import Posts from "./posts/Posts";
 import Compose from "./compose/Compose";
-import { getTimeline as getTimelineFromApi } from "../api/getTimeline";
+import { getTimeline } from "../api/getTimeline";
 import { savePost } from "../api/savePost";
 
 function TimelinePage() {
   const [timeline, setTimeline] = useState([]);
+
+  useEffect(() => {
+    async function getTimelineAsync() {
+      const result = await getTimeline(settings.username);
+      setTimeline(result);
+    }
+    getTimelineAsync();
+  }, []);
 
   function addPost(content) {
     // Remember the timeline before the new post is added.
@@ -29,14 +37,6 @@ function TimelinePage() {
       setTimeline(prevTimeline);
     });
   }
-
-  useEffect(() => {
-    async function getTimeline() {
-      const result = await getTimelineFromApi(settings.username);
-      setTimeline(result);
-    }
-    getTimeline();
-  }, []);
 
   return (
     <>
