@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useInterval from "@use-it/interval";
 import { getTimelineWithEtag } from "../../api/getTimeline";
-import { savePost } from "../../api/getTimeline";
+import { savePost } from "../../api/savePost";
 
 export default username => {
   const defaultDelay = 10000;
