@@ -7,11 +7,11 @@
 
 import React, { useState, useEffect } from "react";
 
-import settings from "./settings";
+import settings from "../settings";
 import Posts from "./posts/Posts";
 import Compose from "./compose/Compose";
-import { get as getFromApi } from "./api/get";
-import { post as postToApi } from "./api/post";
+import { get as getFromApi } from "../api/get";
+import { post as postToApi } from "../api/post";
 
 function TimelinePage() {
   const [timeline, setTimeline] = useState([]);

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import settings from "./settings";
+import settings from "../settings";
 import UserList from "./following/UserList";
 
 export default class FollowingPage extends React.Component {
