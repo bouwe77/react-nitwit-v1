@@ -1,8 +1,8 @@
 import React from "react";
-import axios from "axios";
 
 import settings from "../../settings";
 import UserList from "./UserList";
+import { getFollowing } from "../../api/getFollowing";
 
 export default class Following extends React.Component {
   constructor(props) {
@@ -18,8 +18,7 @@ export default class Following extends React.Component {
   };
 
   getUsers = () => {
-    axios
-      .get(settings.followingUrl)
+    getFollowing(settings.user)
       .then(res => {
         this.setState({ users: res.data });
       })
@@ -54,7 +53,7 @@ export default class Following extends React.Component {
     if (unfollow) {
       const url = `${settings.followingUrl}/${username}`;
       // Unfollow means a DELETE call to the API.
-      axios.delete(url).catch(error => {
+      saveUnfollow.catch(error => {
         console.log(error, error.request, error.response, error.config);
         // The API call failed so restore the original state.
         this.setState({ users: previousUsers });

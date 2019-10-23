@@ -1,7 +1,7 @@
-import { getWithEtag } from "./common";
+import { getWithEtag, get } from "./common";
 import { getTimelineUrl } from "./urls";
 
-export async function getTimeline(username, etag) {
+export async function getTimeline(username, etag = null) {
   const url = getTimelineUrl(username);
-  return await getWithEtag(url, etag);
+  return etag ? await getWithEtag(url, etag) : await get(url);
 }

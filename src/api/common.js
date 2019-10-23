@@ -34,6 +34,12 @@ export function post(url, data) {
   });
 }
 
+export function delete2(url) {
+  return axios.delete(url).catch(error => {
+    handleError(error);
+  });
+}
+
 export function handleError(error) {
   console.log(error, error.request, error.response, error.config);
   throw error;

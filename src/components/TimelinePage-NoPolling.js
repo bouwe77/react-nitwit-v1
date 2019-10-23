@@ -33,6 +33,7 @@ function TimelinePage() {
   useEffect(() => {
     async function getTimeline() {
       const result = await getTimelineFromApi(settings.user);
+      console.log("hoi", result);
       setTimeline(result);
     }
     getTimeline();
