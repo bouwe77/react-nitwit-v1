@@ -2,19 +2,19 @@ import axios from "axios";
 
 const apiHostname = "https://nitwit-api.azurewebsites.net";
 
-export function getTimelineUrl(username) {
+export function timelineUrl(username) {
   return `${apiHostname}/users/${username}/timeline`;
 }
 
-export function addPostUrl(username) {
+export function postsUrl(username) {
   return `${apiHostname}/users/${username}/posts`;
 }
 
-export function getFollowingUrl(username) {
+export function followingUrl(username) {
   return `${apiHostname}/users/${username}/following`;
 }
 
-export function getUnfollowUrl(username, unfollowUsername) {
+export function unfollowUrl(username, unfollowUsername) {
   return `${apiHostname}/users/${username}/following/${unfollowUsername}`;
 }
 

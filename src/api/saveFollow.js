@@ -1,6 +1,6 @@
-import { getFollowingUrl, post } from "./common";
+import { followingUrl, post } from "./common";
 
 export function saveFollow(username, follow) {
-  const url = getFollowingUrl(username);
+  const url = followingUrl(username);
   post(url, follow);
 }

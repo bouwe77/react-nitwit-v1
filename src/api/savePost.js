@@ -1,6 +1,6 @@
-import { addPostUrl, post } from "./common";
+import { postsUrl, post } from "./common";
 
 export function savePost(username, postToAdd) {
-  const url = addPostUrl(username);
+  const url = postsUrl(username);
   return post(url, postToAdd);
 }
