@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useInterval from "@use-it/interval";
-import { getTimeline } from "../../api/getTimeline";
+import { getTimelineWithEtag } from "../../api/getTimeline";
 import { savePost } from "../../api/getTimeline";
 
 export default username => {
@@ -16,7 +16,7 @@ export default username => {
     if (delay !== defaultDelay) setDelay(defaultDelay);
 
     // Call the API to get the timeline.
-    const result = await getTimeline(username, etag);
+    const result = await getTimelineWithEtag(username, etag);
     if (result.isNew) {
       setTimeline(result.data);
       setEtag(result.etag);

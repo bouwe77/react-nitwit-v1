@@ -1,6 +1,11 @@
 import { getTimelineUrl, getWithEtag, get } from "./common";
 
-export async function getTimeline(username, etag = null) {
+export async function getTimelineWithEtag(username, etag) {
   const url = getTimelineUrl(username);
-  return etag ? await getWithEtag(url, etag) : await get(url);
+  return await getWithEtag(url, etag);
+}
+
+export async function getTimeline(username) {
+  const url = getTimelineUrl(username);
+  return await get(url);
 }
