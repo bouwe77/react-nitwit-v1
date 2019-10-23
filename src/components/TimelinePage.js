@@ -2,11 +2,10 @@ import React from "react";
 
 import Posts from "./posts/Posts";
 import Compose from "./compose/Compose";
-import useTimeline from "./timeline/useTimeline";
-import settings from "../settings";
+import useTimeline from "./posts/useTimeline";
 
 function TimelinePage() {
-  const [timeline, addPost] = useTimeline(settings.username);
+  const [timeline, addPost] = useTimeline();
 
   return (
     <>

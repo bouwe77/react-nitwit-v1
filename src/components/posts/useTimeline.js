@@ -2,8 +2,9 @@ import { useState } from "react";
 import useInterval from "@use-it/interval";
 import { getTimelineWithEtag } from "../../api/getTimeline";
 import { savePost } from "../../api/savePost";
+import settings from "../../settings";
 
-export default username => {
+export default () => {
   const defaultDelay = 10000;
   const [delay, setDelay] = useState(0);
   const [timeline, setTimeline] = useState([]);
@@ -16,7 +17,7 @@ export default username => {
     if (delay !== defaultDelay) setDelay(defaultDelay);
 
     // Call the API to get the timeline.
-    const result = await getTimelineWithEtag(username, etag);
+    const result = await getTimelineWithEtag(settings.username, etag);
     if (result.isNew) {
       setTimeline(result.data);
       setEtag(result.etag);
@@ -28,10 +29,10 @@ export default username => {
     const prevTimeline = timeline;
 
     // Add new post to state BEFORE posting it to the API (i.e. "optimistic UI updates")
-    setTimeline([{ user: username, content }, ...timeline]);
+    setTimeline([{ user: settings.username, content }, ...timeline]);
 
     // Post the new post to the API.
-    savePost(username, { content }).catch(() => {
+    savePost(settings.username, { content }).catch(() => {
       // Posting to the API failed so "rollback" the state to the previous posts.
       setTimeline(prevTimeline);
     });

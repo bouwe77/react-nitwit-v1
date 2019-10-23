@@ -14,34 +14,34 @@ import { getTimeline } from "../api/getTimeline";
 import { savePost } from "../api/savePost";
 
 function TimelinePage() {
-  const [timeline, setTimeline] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     async function getTimelineAsync() {
       const result = await getTimeline(settings.username);
-      setTimeline(result);
+      setPosts(result);
     }
     getTimelineAsync();
   }, []);
 
   function addPost(content) {
-    // Remember the timeline before the new post is added.
-    const prevTimeline = timeline;
+    // Remember the posts before the new post is added.
+    const prevPosts = posts;
 
     // Add new post to state BEFORE posting it to the API (i.e. "optimistic UI updates")
-    setTimeline([{ user: settings.username, content }, ...timeline]);
+    setPosts([{ user: settings.username, content }, ...posts]);
 
     // Post the new post to the API.
     savePost(settings.username, { content }).catch(() => {
       // Posting to the API failed so "rollback" the state to the previous posts.
-      setTimeline(prevTimeline);
+      setPosts(prevPosts);
     });
   }
 
   return (
     <>
       <Compose addPost={addPost} />
-      <Posts posts={timeline} />
+      <Posts posts={posts} />
     </>
   );
 }
