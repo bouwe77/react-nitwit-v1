@@ -1,5 +1,4 @@
-import { getWithEtag, get } from "./common";
-import { getTimelineUrl } from "./urls";
+import { getTimelineUrl, getWithEtag, get } from "./common";
 
 export async function getTimeline(username, etag = null) {
   const url = getTimelineUrl(username);
