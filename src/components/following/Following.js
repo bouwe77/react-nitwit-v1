@@ -20,7 +20,7 @@ export default class Following extends React.Component {
   };
 
   getUsers = () => {
-    getFollowing(settings.user)
+    getFollowing(settings.username)
       .then(result => {
         this.setState({ users: result });
       })
@@ -54,14 +54,14 @@ export default class Following extends React.Component {
     // Save the new following status to the API.
     if (follow) {
       // Save to the API the user must be followed.
-      saveFollow(settings.user, { user: userToFollowOrUnfollow }).catch(error => {
+      saveFollow(settings.username, { user: userToFollowOrUnfollow }).catch(error => {
         console.log(error, error.request, error.response, error.config);
         // The API call failed so restore the original state.
         this.setState({ users: previousUsers });
       });
     } else {
       // Save to the API that the user must be unfollowed.
-      saveUnfollow(settings.user, userToFollowOrUnfollow).catch(error => {
+      saveUnfollow(settings.username, userToFollowOrUnfollow).catch(error => {
         console.log(error, error.request, error.response, error.config);
         // The API call failed so restore the original state.
         this.setState({ users: previousUsers });

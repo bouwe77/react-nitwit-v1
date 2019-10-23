@@ -6,7 +6,7 @@ import useTimeline from "./timeline/useTimeline";
 import settings from "../settings";
 
 function TimelinePage() {
-  const [timeline, addPost] = useTimeline(settings.user);
+  const [timeline, addPost] = useTimeline(settings.username);
 
   return (
     <>

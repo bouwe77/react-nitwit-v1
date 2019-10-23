@@ -21,10 +21,10 @@ function TimelinePage() {
     const prevTimeline = timeline;
 
     // Add new post to state BEFORE posting it to the API (i.e. "optimistic UI updates")
-    setTimeline([{ user: settings.user, content }, ...timeline]);
+    setTimeline([{ user: settings.username, content }, ...timeline]);
 
     // Post the new post to the API.
-    savePost(settings.user, { content }).catch(() => {
+    savePost(settings.username, { content }).catch(() => {
       // Posting to the API failed so "rollback" the state to the previous posts.
       setTimeline(prevTimeline);
     });
@@ -32,7 +32,7 @@ function TimelinePage() {
 
   useEffect(() => {
     async function getTimeline() {
-      const result = await getTimelineFromApi(settings.user);
+      const result = await getTimelineFromApi(settings.username);
       setTimeline(result);
     }
     getTimeline();

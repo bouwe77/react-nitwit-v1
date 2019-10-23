@@ -1,3 +1,3 @@
-const user = "bouwe";
+const username = "bouwe";
 
-export default { user };
+export default { username };
