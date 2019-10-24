@@ -1,21 +1,31 @@
-// import React, { createContext, useContext } from "react";
-// import { useAuth } from "./AuthProvider";
+import React, { createContext, useContext } from "react";
+import { useAuth } from "./AuthProvider";
 
-// const UserContext = createContext();
+/**
+ * The UserContext handles context regarding the currently logged in user.
+ */
+const UserContext = createContext();
 
-// function UserProvider(props) {
-//   const {
-//     data: { user }
-//   } = useAuth();
-//   return <UserContext.Provider value={user} {...props} />;
-// }
+/**
+ * The UserProvider is the provider for the UserContext.
+ * It provides means of holding data of the logged in user.
+ */
+function UserProvider(props) {
+  const {
+    data: { user }
+  } = useAuth();
+  return <UserContext.Provider value={user} {...props} />;
+}
 
-// function useUser() {
-//   const context = useContext(UserContext);
-//   if (context === undefined) {
-//     throw new Error("useUser must be used within a UserProvider");
-//   }
-//   return context;
-// }
+/**
+ * The useUser hook exposes the UserProvider.
+ */
+function useUser() {
+  const context = useContext(UserContext);
+  if (context === undefined) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  return context;
+}
 
-// export { UserProvider, useUser };
+export { UserProvider, useUser };
