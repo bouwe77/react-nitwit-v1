@@ -2,8 +2,7 @@ import React, { useState } from "react";
 
 import Header from "./Header";
 import Container from "./Container";
-//import TimelinePage from "../TimelinePage";
-import TimelinePage from "../TimelinePage-NoPolling";
+import TimelinePage from "../TimelinePage";
 import FollowingPage from "../FollowingPage";
 
 function App() {

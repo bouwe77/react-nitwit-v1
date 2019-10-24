@@ -1,18 +1,16 @@
+// ==============================================================
+// Deze TimelinePage gebruiken bij de ADVANCED als uitgangspunt.
+// De opdracht is dan om dit te vervangen door useInterval,
+// net zoals de eindopdracht van de FOUNDATION...
+// ==============================================================
+
 import React from "react";
 
-import Posts from "./posts/Posts";
-import Compose from "./compose/Compose";
-import useTimeline from "./posts/useTimeline";
+import settings from "../settings";
+import Timeline from "./timeline/Timeline";
 
 function TimelinePage() {
-  const [timeline, addPost] = useTimeline();
-
-  return (
-    <>
-      <Compose addPost={addPost} />
-      <Posts posts={timeline} />
-    </>
-  );
+  return <Timeline username={settings.username} />;
 }
 
 export default TimelinePage;
